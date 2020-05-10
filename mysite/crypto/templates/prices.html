@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if notfound %}
+    <h1>Mention Please</h1>
+{% else %}
+
+{% if crypto.HasWarning %}
+    <h1>Not Valid</h1>
+{% endif %}
+
+{% for key,value in crypto.DISPLAY.items %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{key}}</h1>
+      <hr class="h4">
+      <p class="lead">
+        <strong>Price</strong>{{value.USD.PRICE}}<br />
+        <strong>High of the Day</strong>{{value.USD.HIGHDAY}}<br />
+        <strong>Low of the day</strong>{{value.USD.LOWDAY}}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+{% endif %}
+{% endblock %}
